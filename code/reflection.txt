@@ -1,7 +1,1 @@
-Write your reflection here.
-
-See reflection.md for what makes a good reflection — be specific, use the
-terminology from this assignment (grain, long vs. wide, vectorized .str methods,
-coerce, NaT, pd.to_datetime format, .dt, concat, ignore_index, group by, named
-aggregation, reset_index, pivot_table, fill_value, melt, lineage), and make it
-actionable.
+The hardest part of this assignment was parsing dates in parse_pay_date. I understood why the dates all had to be the same type, but I struggled with how to make every date match and which format codes to use, like "%m/%d/%Y" for "8/14/2026" and "%Y-%m-%d" for "2026-09-25" and when certain %letters were used and when they were not. I learned that errors="coerce" turns anything unreadable into NaT, so I could parse the column twice and fill the gaps with fillna. I also learned what grain and lineage mean and how they fit together. Lineage means row-level steps like add_clean_columns return a wider copy and never change the raw columns. Grain means what one row stands for, so a group by or pivot_table starts a new table at a new grain while the history stays untouched. I struggled with pivot_table, both in deciding what goes in index, columns and values and in knowing when to use fill_value. I also kept forgetting pieces of named aggregation, like the lambda for overtime_weeks and the reset_index() that moves the group keys out of the index. Next time, I’ll keep a short cheat sheet of each pandas function, what it takes in and returns, and what it needs alongside it. I’ll check it before I code and when I connect pandas to Streamlit, because I often didn’t know a step was missing until a test failed.
