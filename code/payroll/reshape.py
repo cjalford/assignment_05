@@ -81,5 +81,5 @@ def pay_by_month(history: pd.DataFrame) -> pd.DataFrame:
         aggfunc="sum",
         fill_value=0.0,
     ).round(2).reset_index()
-    table.columns.name = None  # drop the name "department" from the columns
+    table = table.rename_axis(columns=None)  # drop the "department" label
     return table
